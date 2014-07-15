@@ -1,0 +1,8 @@
+{
+  "name": "socicon.js",
+  "version": "0.0.1",
+  "dependencies": {
+    "gulp": "~3.8.6",
+    "gulp-sass": "~0.9.3",
+  }
+}
