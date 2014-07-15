@@ -1,6 +1,7 @@
 var 
 	gulp = require('gulp'),
-	sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	prefix = require('gulp-autoprefixer');
 
 gulp.task('sass', function () {
 	gulp
@@ -9,6 +10,7 @@ gulp.task('sass', function () {
 			errLogToConsole: true,
 			sourceMap: 'sass'
 		}))
+		.pipe(prefix("last 3 version", "> 1%", { cascade: true }))
 		.pipe(gulp.dest('./source/css/'));
 });
 

@@ -1,4 +1,8 @@
 a {
-  color: #333; }
+  color: #333;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-transition: color 0.2s ease-out 1s;
+          transition: color 0.2s ease-out 1s; }
   a:hover {
     color: #777; }
