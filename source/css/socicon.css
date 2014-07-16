@@ -5,4 +5,7 @@ a {
   -webkit-transition: color 0.2s ease-out 1s;
           transition: color 0.2s ease-out 1s; }
   a:hover {
-    color: #777; }
+    color: #777;
+    text-shadow: 1px 0 1px #383838; }
+  a:active {
+    color: #383838; }
