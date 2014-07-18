@@ -3,7 +3,9 @@ var
 	sass = require('gulp-sass'),
 	prefix = require('gulp-autoprefixer'),
 	watch = require('gulp-watch'),
-	csso = require('gulp-csso');
+	rename = require("gulp-rename"),
+	csso = require('gulp-csso'),
+	uglify = require('gulp-uglify');
 
 gulp.task('sass', function () {
 	gulp
@@ -12,23 +14,32 @@ gulp.task('sass', function () {
 			errLogToConsole: true,
 			sourceMap: 'sass'
 		}))
-		.pipe(prefix("last 3 version", "> 1%", { cascade: true }))
-		.pipe(gulp.dest('./source/css/'));
+		.pipe( prefix("last 3 version", "> 1%", { cascade: true }) )
+		.pipe( gulp.dest('./source/css/') );
 });
 
 gulp.task('watch', function() {
 	gulp.watch('./dev/css/**', function() {
-		gulp.run('sass');
+		gulp.run( 'sass' );
 	});
 });
 
 gulp.task('css-minify', function() {
 	gulp
-		.src( './source/css/*.css' )
+		.src( './source/css/socicon.css' )
 		.pipe( csso() )
-		.pipe( gulp.dest('./production/css/') );
+		.pipe( rename({suffix: '.min'}) )
+		.pipe( gulp.dest('./source/css/') );
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('js-minify', function() {
+	gulp
+		.src( './dev/js/*.js' )
+		.pipe( uglify() )
+		.pipe( rename({suffix: '.min'}) )
+		.pipe( gulp.dest('./source/js/') );
+});
 
-gulp.task('build', ['sass', 'css-minify']);
+gulp.task('default', ['sass', 'watch', 'js-minify']);
+
+gulp.task('build', ['sass', 'css-minify', 'js-minify']);

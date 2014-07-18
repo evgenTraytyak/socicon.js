@@ -1,12 +1,98 @@
-a {
-	color: #333;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-	transition: color 0.2s ease-out 1s;
-	&:hover {
-		color: #777;
-		text-shadow: 1px 0 1px #383838;
-		}
-	&:active {
-		color: #383838;
+@font-face {
+	font-family: 'socicon';
+	src: url('../font/socicon-webfont.eot');
+	src: url('../font/socicon-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../font/socicon-webfont.woff') format('woff'),
+		url('../font/socicon-webfont.ttf') format('truetype'),
+		url('../font/socicon-webfont.svg#sociconregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	}
+
+.socicon {
+	font-family: 'socicon' !important;
+	overflow: hidden;
+	a {
+		display: inline-block;
+		text-align: center;
+		text-decoration: none;
 		}
 	}
+
+// For demo
+.socicon {
+	padding-bottom: 20px;
+	}
+
+p {
+	padding: 0;
+	margin: 0;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	font-size: 24px;
+	}
+
+
+.twitter { background-color: #4da7de; &:before {content: "a"; } }
+.facebook { background-color: #3e5b98; &:before {content: "b"; } }
+.google { background-color: #d93e2d; &:before {content: "c"; } }
+.pinterest { background-color: #c92619; &:before {content: "d"; } }
+.foursquare { background-color: #23b7e0; &:before {content: "e"; } }
+.yahoo { background-color: #6E2A85; &:before {content: "f"; } }
+.skype { background-color: #28abe3; &:before {content: "g"; } }
+.yelp { background-color: #c83218; &:before {content: "h"; } }
+.feedburner { background-color: #FFCC00; &:before {content: "i"; } }
+.linkedin { background-color: #3371b7; &:before {content: "j"; } }
+.viadeo { background-color: #e4a000; &:before {content: "k"; } }
+.xing { background-color: #005a60; &:before {content: "l"; } }
+.myspace { background-color: #323232; &:before {content: "m"; } }
+.soundcloud { background-color: #fe3801; &:before {content: "n"; } }
+.spotify { background-color: #7bb342; &:before {content: "o"; } }
+.grooveshark { background-color: #000000; &:before {content: "p"; } }
+.lastfm { background-color: #d41316; &:before {content: "q"; } }
+.youtube { background-color: #e02a20; &:before {content: "r"; } }
+.vimeo { background-color: #51b5e7; &:before {content: "s"; } }
+.dailymotion { background-color: #004e72; &:before {content: "t"; } }
+.vine {background-color: #00b389; &:before {content: "u"; } }
+.flickr { background-color: #1e1e1b; &:before {content: "v"; } }
+.500px { background-color: #58a9de; &:before {content: "w"; } }
+.instagram { background-color: #9c7c6e; &:before {content: "x"; } }
+.wordpress { background-color: #464646; &:before {content: "y"; } }
+.tumblr { background-color: #45556c; &:before {content: "z"; } }
+.blogger { background-color: #ec661c; &:before {content: "A"; } }
+.technorati {	background-color: #5cb030; &:before {content: "B"; } }
+.reddit { background-color: #e74a1e; &:before {content: "C"; } }
+.dribbble { background-color: #e84d88; &:before {content: "D"; } }
+.stumbleupon { background-color: #e64011; &:before {content: "E"; } }
+.digg {background-color: #1d1d1b; &:before {content: "F"; } }
+.envato { background-color: #597c3a; &:before {content: "G"; } }
+.behance { background-color: #000000; &:before {content: "H"; } }
+.delicious { background-color: #020202; &:before {content: "I"; } }
+.deviantart { background-color: #c5d200; &:before {content: "J"; } }
+.forrst { background-color: #5B9A68; &:before {content: "K"; } }
+.play { background-color: #000000; &:before {content: "L"; } }
+.zerply { background-color: #9DBC7A; &:before {content: "M"; } }
+.wikipedia { background-color: #000000; &:before {content: "N"; } }
+.apple { background-color: #B9BFC1; &:before {content: "O"; } }
+.flattr { background-color: #F67C1A; &:before {content: "P"; } }
+.github { background-color: #5380c0; &:before {content: "Q"; } }
+.chimein { background-color: #888688; &:before {content: "R"; } }
+.friendfeed { background-color: #2F72C4; &:before {content: "S"; } }
+.newsvine { background-color: #075B2F; &:before {content: "T"; } }
+.identica { background-color: #000000; &:before {content: "U"; } }
+.bebo {background-color: #EF1011; &:before {content: "V"; } }
+.zynga { background-color: #DC0606; &:before {content: "W"; } }
+.steam { background-color: #8F8D8A; &:before {content: "X"; } }
+.xbox {background-color: #92C83E; &:before {content: "Y"; } }
+.windows { background-color: #00BDF6; &:before {content: "Z"; } }
+.outlook { background-color: #0072C6; &:before {content: "1"; } }
+.coderwall { background-color: #3E8DCC; &:before {content: "2"; } }
+.tripadvisor { background-color: #000000; &:before {content: "3"; } }
+.netcodes { background-color: #2E3436; &:before {content: "4"; } }
+.easid { background-color: #1ABC9C; &:before {content: "5"; } }
+.lanyrd { background-color: #3c80c9; &:before {content: "7"; } }
+.slideshare { background-color: #4ba3a6; &:before {content: "8"; } }
+.buffer { background-color: #000000; &:before {content: "9"; } }
+.rss { background-color: #f26109; &:before {content: ","; } }
+.vkontakte { background-color: #5a7fa6; &:before {content: ";"; } }
+.disqus { background-color: #2e9fff; &:before {content: ":"; } }
