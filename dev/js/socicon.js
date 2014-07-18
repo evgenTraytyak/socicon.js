@@ -1,76 +1,99 @@
-(function(window) {
+(function(context) {
 
-	defaultSetting = {
-		color: '#fff', // #fff, white, related
-		size: '50',	// 30px
-		radius: 'auto', // auto, square, circle, 10px, 20%
-		bg: 'auto' //  none, #fff
-	},
-	settings = {};
+	var 
+		getDataAttr, setProperties,
+		defaultSetting = {
+			color: '#fff', // #fff, white, related
+			size: '50',	// 30
+			radius: 'auto', // auto, square, circle, 10px, 20%
+			bg: 'auto' //  none, #fff
+		};
 
-	function getDataAttr(set) {
-		for (key in defaultSetting){
-			if (set.getAttribute('data-' + key)) 
-				settings[key] = set.getAttribute('data-' + key);
-			else 
-				settings[key] = defaultSetting[key];
-		}
-
+	function Socicon() {
+		this.init();
 	}
 
-	function setProperties(set) {
-		icons = set.getElementsByTagName('a');
-		for (j = 0, len = icons.length; j < len; j++){
-			if (settings.color === 'related')
-				icons[j].style.color = getComputedStyle(icons[j], null).getPropertyValue('background-color');
-			else 
-				icons[j].style.color = settings.color;	
+	getDataAttr = function(set) {
+		var 
+			key,
+			obj = {};
 
-			if (settings.bg === 'none')
-				icons[j].style.backgroundColor = 'transparent'
-			else {
-				icons[j].style.backgroundColor = settings.bg;
+		for (key in defaultSetting) {
+			obj[key] = set.getAttribute('data-' + key) || defaultSetting[key];
+		}
+
+		return obj;
+	};
+
+	setProperties = function(set) {
+		var 
+			i_style, p_color, p_radius, icon,
+			settings = {},
+			i = 0,
+			icons = set.getElementsByTagName('a'),
+			len = icons.length;
+
+
+		settings = getDataAttr(set);
+			
+		for (; i < len; i++) {
+			icon = icons[i];
+			i_style = icon.style;
+
+			if (settings.color === 'related') {
+				p_color = getComputedStyle(icon, null).getPropertyValue('background-color');
+			} else {
+				p_color = settings.color;	
 			}
 
-			icons[j].style.height = settings.size + 'px';
-			icons[j].style.width = settings.size + 'px';
-			icons[j].style.lineHeight = settings.size + 'px';
-			icons[j].style.fontSize = settings.size * 0.6 + 'px';
+			i_style.color = p_color;
+
+			i_style.backgroundColor = (settings.bg === 'none') ? 'transparent' : settings.bg;
+
+			i_style.height = settings.size + 'px';
+			i_style.width = settings.size + 'px';
+			i_style.lineHeight = settings.size + 'px';
+			i_style.fontSize = settings.size * 0.6 + 'px';
 
 			switch (settings.radius) {
 				case 'auto':
-					icons[j].style.borderRadius = settings.size * 0.2 + 'px'
+					p_radius = settings.size * 0.2 + 'px';
 					break;
 				case 'circle':
-					icons[j].style.borderRadius = '50%'
+					p_radius = '50%';
 					break;
 				case 'square':
-					icons[j].style.borderRadius = 'none'
+					p_radius = 'none';
 					break;
 				default:
-					icons[j].style.borderRadius = settings.radius;
+					p_radius = settings.radius;
 			}
+
+			i_style.borderRadius = p_radius;
 		}
-	}
-
-	function Socicon() {
-		this.style();
-	}
-
-	window.Socicon = Socicon;
+	};
 
 	Socicon.prototype = {
-		style: function() {
-			this.render();
+		init: function() {
+			var 
+				that = this;
+
+			context.onload = function() {
+				that.style();
+			};
 		},
-		render: function() {
-			this.iconSet = document.getElementsByClassName('socicon');
-			for (i = 0; i < this.iconSet.length; i++) {
-				getDataAttr(this.iconSet[i]);
-				setProperties(this.iconSet[i]);
+		style: function() {
+			var
+				iconSet = context.document.getElementsByClassName('socicon'),
+				len = iconSet.length,
+				i = 0;
+
+			for (; i < len; i++) {
+				setProperties(iconSet[i]);
 			}
 		}
-	}
-}(window));
+	};
 
-var social = new Socicon();
+	context.instanceSocicon = new Socicon();
+
+})(this);
