@@ -1,9 +1,9 @@
 (function(context) {
 
 	var 
-		getDataAttr, setProperties, getStyle,
+		getDataAttr, setProperties, getStyle, parseRadius,
 		defaultSetting = {
-			color: '#fff', // #fff, white, related
+			color: 'white', // #fff, white, related
 			size: '50',	// 30
 			radius: 'auto', // auto, square, circle, 10px, 20%
 			bg: 'auto' //  none, #fff
@@ -15,6 +15,19 @@
 
 	getStyle = function(element, property) {
 		return getComputedStyle(element, null).getPropertyValue(property);
+	};
+
+	parseRadius = function(settings) {
+		switch (settings.radius) {
+			case 'auto':
+				return settings.size * 0.2 + 'px';
+			case 'circle':
+				return '50%';
+			case 'square':
+				return 'none';
+			default:
+				return settings.radius;
+		}
 	};
 
 	getDataAttr = function(set) {
@@ -31,40 +44,23 @@
 
 	setProperties = function(set) {
 		var 
-			iconStyle, radius, icon,
-			settings = {},
+			icon, iconStyle,
 			i = 0,
+			settings = getDataAttr(set),
 			icons = set.getElementsByTagName('a'),
 			len = icons.length;
-
-		settings = getDataAttr(set);
-			
+	
 		for (; i < len; i++) {
 			icon = icons[i];
 			iconStyle = icon.style;
 
-			switch (settings.radius) {
-				case 'auto':
-					radius = settings.size * 0.2 + 'px';
-					break;
-				case 'circle':
-					radius = '50%';
-					break;
-				case 'square':
-					radius = 'none';
-					break;
-				default:
-					radius = settings.radius;
-			}
-
 			iconStyle.width = settings.size + 'px';
 			iconStyle.height = settings.size + 'px';
-			iconStyle.borderRadius = radius;
-			iconStyle.backgroundColor = (settings.bg === 'none') ? 'transparent' : settings.bg;
+			iconStyle.borderRadius = parseRadius(settings);
 			iconStyle.lineHeight = settings.size + 'px';
 			iconStyle.fontSize = settings.size * 0.6 + 'px';
 			iconStyle.color = (settings.color === 'related') ? getStyle(icon, 'background-color') : settings.color;
-
+			iconStyle.backgroundColor = (settings.bg === 'none') ? 'transparent' : settings.bg;
 		}
 	};
 
