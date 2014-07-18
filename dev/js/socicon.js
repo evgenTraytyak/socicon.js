@@ -1,7 +1,7 @@
 (function(context) {
 
 	var 
-		getDataAttr, setProperties,
+		getDataAttr, setProperties, getStyle,
 		defaultSetting = {
 			color: '#fff', // #fff, white, related
 			size: '50',	// 30
@@ -12,6 +12,10 @@
 	function Socicon() {
 		this.init();
 	}
+
+	getStyle = function(element, property) {
+		return getComputedStyle(element, null).getPropertyValue(property);
+	};
 
 	getDataAttr = function(set) {
 		var 
@@ -27,49 +31,40 @@
 
 	setProperties = function(set) {
 		var 
-			i_style, p_color, p_radius, icon,
+			iconStyle, radius, icon,
 			settings = {},
 			i = 0,
 			icons = set.getElementsByTagName('a'),
 			len = icons.length;
 
-
 		settings = getDataAttr(set);
 			
 		for (; i < len; i++) {
 			icon = icons[i];
-			i_style = icon.style;
-
-			if (settings.color === 'related') {
-				p_color = getComputedStyle(icon, null).getPropertyValue('background-color');
-			} else {
-				p_color = settings.color;	
-			}
-
-			i_style.color = p_color;
-
-			i_style.backgroundColor = (settings.bg === 'none') ? 'transparent' : settings.bg;
-
-			i_style.height = settings.size + 'px';
-			i_style.width = settings.size + 'px';
-			i_style.lineHeight = settings.size + 'px';
-			i_style.fontSize = settings.size * 0.6 + 'px';
+			iconStyle = icon.style;
 
 			switch (settings.radius) {
 				case 'auto':
-					p_radius = settings.size * 0.2 + 'px';
+					radius = settings.size * 0.2 + 'px';
 					break;
 				case 'circle':
-					p_radius = '50%';
+					radius = '50%';
 					break;
 				case 'square':
-					p_radius = 'none';
+					radius = 'none';
 					break;
 				default:
-					p_radius = settings.radius;
+					radius = settings.radius;
 			}
 
-			i_style.borderRadius = p_radius;
+			iconStyle.width = settings.size + 'px';
+			iconStyle.height = settings.size + 'px';
+			iconStyle.borderRadius = radius;
+			iconStyle.backgroundColor = (settings.bg === 'none') ? 'transparent' : settings.bg;
+			iconStyle.lineHeight = settings.size + 'px';
+			iconStyle.fontSize = settings.size * 0.6 + 'px';
+			iconStyle.color = (settings.color === 'related') ? getStyle(icon, 'background-color') : settings.color;
+
 		}
 	};
 
