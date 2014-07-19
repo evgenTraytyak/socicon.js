@@ -1,6 +1,6 @@
 (function(context) {
 
-	var 
+	var
 		getDataAttr, setProperties, getStyle, parseRadius,
 		defaultSetting = {
 			color: 'white', // #fff, white, related
@@ -31,7 +31,7 @@
 	};
 
 	getDataAttr = function(set) {
-		var 
+		var
 			key,
 			obj = {};
 
@@ -43,13 +43,13 @@
 	};
 
 	setProperties = function(set) {
-		var 
+		var
 			icon, iconStyle,
-			i = 0,
 			settings = getDataAttr(set),
 			icons = set.getElementsByTagName('a'),
-			len = icons.length;
-	
+			len = icons.length,
+			i = 0;
+
 		for (; i < len; i++) {
 			icon = icons[i];
 			iconStyle = icon.style;
@@ -66,13 +66,9 @@
 
 	Socicon.prototype = {
 		init: function() {
-			var 
-				that = this;
-
-			context.onload = function() {
-				that.style();
-			};
+			context.onload = this.style;
 		},
+
 		style: function() {
 			var
 				iconSet = context.document.getElementsByClassName('socicon'),
