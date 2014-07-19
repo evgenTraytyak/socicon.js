@@ -133,9 +133,9 @@ p {
   .flickr:before {
     content: "v"; }
 
-.500px {
+._500px {
   background-color: #58a9de; }
-  .500px:before {
+  ._500px:before {
     content: "w"; }
 
 .instagram {

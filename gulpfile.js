@@ -18,10 +18,12 @@ gulp.task('sass', function () {
 		.pipe( gulp.dest('./source/css/') );
 });
 
-gulp.task('watch', function() {
-	gulp.watch('./dev/css/**', function() {
-		gulp.run( 'sass' );
-	});
+gulp.task('watch', function () {
+    gulp.src('./dev/css/**')
+        .pipe(watch(function(files) {
+            return files.pipe(sass())
+                .pipe(gulp.dest('./source/css/'));
+        }));
 });
 
 gulp.task('css-minify', function() {
