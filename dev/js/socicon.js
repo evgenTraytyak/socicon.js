@@ -1,7 +1,7 @@
 (function(context) {
 
 	var
-		getDataAttr, setProperties, getStyle, parseRadius, styleIcons,
+		getDataAttr, setProperties, getStyle, parseRadius,
 		defaultSetting = {
 			color: 'white', // #fff, white, related
 			size: '50',	// 30
@@ -64,23 +64,21 @@
 		}
 	};
 
-	styleIcons = function() {
-		var
-			iconSet = context.document.getElementsByClassName('socicon'),
-			len = iconSet.length,
-			i = 0;
-
-		for (; i < len; i++) {
-			setProperties(iconSet[i]);
-		}
-	};
-
 	Socicon.prototype = {
 		init: function() {
-			context.onload = styleIcons;
+			context.onload = this.style;
 		},
 
-		style: styleIcons
+		style: function() {
+			var
+				iconSet = context.document.getElementsByClassName('socicon'),
+				len = iconSet.length,
+				i = 0;
+
+			for (; i < len; i++) {
+				setProperties(iconSet[i]);
+			}
+		}
 	};
 
 	context.instanceSocicon = new Socicon();
