@@ -42,7 +42,8 @@ Download and extract the [latest zip package][bower] from this repositiory and c
 ![Example](https://raw.githubusercontent.com/evgenTraytyak/socicon.js/master/demo/demo.png "Example icons")
 
 ##License
-Copyright (c) 2014 [Evgeny Traytyak][twitter]
+This software is released under the terms of the
+[MIT license](https://github.com/evgenTraytyak/socicon.js/blob/master/LICENSE).
 
 [bower]:http://bower.io/
 [twitter]:https://twitter.com/evgen_traytyak
