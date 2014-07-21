@@ -46,4 +46,3 @@ This software is released under the terms of the
 [MIT license](https://github.com/evgenTraytyak/socicon.js/blob/master/LICENSE).
 
 [bower]:http://bower.io/
-[twitter]:https://twitter.com/evgen_traytyak
