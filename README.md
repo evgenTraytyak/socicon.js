@@ -16,6 +16,26 @@ bower install socicon --save-dev
 
 Download and extract the [latest zip package][bower] from this repositiory and copy the two files `source/js/socicon.min.js` and `sourse/css/socicon.min.css` into your project. Then include one of them into your <head> as above.
 
+### What's included
+
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+
+```
+socicon/
+├── css/
+│   ├── socicon.css
+│   └── socicon.min.css
+├── js/
+│   ├── socicon.js
+│   └── socicon.min.js
+└── fonts/
+    ├── socicon-webfont.eot
+    ├── socicon-webfont.svg
+    ├── socicon-webfont.ttf
+    └── socicon-webfont.woff
+```
+
+
 ##How to use
 
 | Attributes          | Defaults value             | Available values         |
@@ -38,8 +58,6 @@ Download and extract the [latest zip package][bower] from this repositiory and c
 
 ```data-bg="none"``` - uses transparent background color
 
-##Examples
-![Example](https://raw.githubusercontent.com/evgenTraytyak/socicon.js/master/demo/demo.png "Example icons")
 
 ##License
 This software is released under the terms of the
