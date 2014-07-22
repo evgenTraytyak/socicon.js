@@ -14,8 +14,12 @@ bower install socicon --save-dev
 ```
 ###Manual installation
 
-Download and extract the [latest zip package][bower] from this repositiory and copy the two files `source/js/socicon.min.js` and `sourse/css/socicon.min.css` into your project. Then include one of them into your <head> as above.
+Download and extract the [latest zip package][latest] from this repositiory and copy this files into your project. Then include them into your <head> as below.
 
+```html
+	<link rel="stylesheet" href="source/css/socicon.min.css">
+	<script rel="text/javascript" src="source/js/socicon.min.js" ></script>
+```
 ### What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
@@ -64,3 +68,4 @@ This software is released under the terms of the
 [MIT license](https://github.com/evgenTraytyak/socicon.js/blob/master/LICENSE).
 
 [bower]:http://bower.io/
+[latest]:https://github.com/evgenTraytyak/socicon.js/archive/master.zip
