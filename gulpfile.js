@@ -10,7 +10,7 @@ var
 gulp.task('sass', function () {
 	gulp
 		.src('./dev/css/*.scss')
-		.pipe(sass({ 
+		.pipe( sass({
 			errLogToConsole: true,
 			sourceMap: 'sass'
 		}))
@@ -19,8 +19,8 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.src('./dev/css/**')
-        .pipe(watch(function(files) {
+    gulp.src( './dev/css/**' )
+        .pipe( watch(function(files) {
             return files.pipe(sass())
                 .pipe(gulp.dest('./source/css/'));
         }));
@@ -42,6 +42,11 @@ gulp.task('js-minify', function() {
 		.pipe( gulp.dest('./source/js/') );
 });
 
-gulp.task('default', ['sass', 'watch', 'js-minify']);
+gulp.task('copy', function(){
+  gulp.src('./dev/js/*.js')
+    .pipe(gulp.dest('./source/js/'));
+});
 
-gulp.task('build', ['sass', 'css-minify', 'js-minify']);
+gulp.task('default', ['sass', 'copy', 'watch', 'js-minify']);
+
+gulp.task('build', ['sass', 'copy', 'css-minify', 'js-minify']);
